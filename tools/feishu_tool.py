@@ -2,9 +2,7 @@
 飞书多维表格工具封装
 """
 import time
-from wsgiref import headers
 import requests
-from aiohttp import payload
 from config.settings import settings
 
 # 全局变量：缓存飞书token
@@ -101,7 +99,7 @@ def query_fin_info(credit_code:str) -> dict | None:
             "conjunction": "and",
             "conditions": [
                 {
-                    "field_name": "统一社会信用代码 (Key)",
+                    "field_name": "统一社会信用代码(Key)",
                     "operator": "is",
                     "value": [credit_code]
                 }
