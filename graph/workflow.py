@@ -151,7 +151,7 @@ def node_check_status(state: AuditState) -> dict:
     if status == "注销":
         return {
             "audit_pass": False,
-            "fail_reason": "审计不通过：企业经营状态为注销，不予扶持。",
+            "fail_reason": "企业经营状态为注销，不予扶持。",
             "policy_version": "原办法版"  # 注销企业命中原办法版
         }
 
@@ -176,7 +176,7 @@ def node_check_industry(state: AuditState) -> dict:
     if industry not in support_industries:
         return {
             "audit_pass": False,
-            "fail_reason": f"审计不通过：所属行业（{industry}）不在政策支持目录内。",
+            "fail_reason": f"所属行业（{industry}）不在政策支持目录内。",
         }
 
     # 第二关：判断是不是在负面清单里
@@ -184,7 +184,7 @@ def node_check_industry(state: AuditState) -> dict:
     if industry in blacklist:
         return {
             "audit_pass": False,
-            "fail_reason": f"审计不通过：所属行业（{industry}）属于政策负面清单，不予扶持。",
+            "fail_reason": f"所属行业（{industry}）属于政策负面清单，不予扶持。",
         }
 
     return {}
@@ -208,7 +208,7 @@ def node_check_tax(state: AuditState) -> dict:
     if tax_amount < tax_threshold:
         return {
             "audit_pass": False,
-            "fail_reason": "审计不通过：纳税总额未达到最新政策门槛。",
+            "fail_reason": "纳税总额未达到最新政策门槛。",
         }
 
     return {}
@@ -230,7 +230,7 @@ def node_check_rd_ratio(state: AuditState) -> dict:
     if rd_ratio < min_rd_ratio:
         return {
             "audit_pass": False,
-            "fail_reason": "审计不通过：研发投入占营业收入比例未达到政策要求。",
+            "fail_reason": "研发投入占营业收入比例未达到政策要求。",
         }
 
     return {}
